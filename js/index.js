@@ -15,7 +15,7 @@
             this.d[1] = g;
             this.d[2] = b;
             this.d[3] = a;
-            canvas.putImageData(this.id, x, y);
+            this.canvas.putImageData(this.id, x, y);
         }
     }
 
