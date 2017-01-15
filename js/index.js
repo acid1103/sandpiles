@@ -60,26 +60,29 @@
             for (var j = 0; j < data[0].length; j++) {
                 if (data[i][j] > maxPile) {
                     newArr[i][j] = data[i][j] - 4;
+                    if (newArr[i][j] > maxPile) {
+                        reduced = false;
+                    }
                     if (inBounds(i - 1, j)) {
-                        newArr[i - 1][j] = data[i - 1][j] + 1;
+                        newArr[i - 1][j] = (data[i - 1][j] += 1);
                         if (newArr[i - 1][j] > maxPile) {
                             reduced = false;
                         }
                     }
                     if (inBounds(i, j - 1)) {
-                        newArr[i][j - 1] = data[i][j - 1] + 1;
+                        newArr[i][j - 1] = (data[i][j - 1] += 1);
                         if (newArr[i][j - 1] > maxPile) {
                             reduced = false;
                         }
                     }
                     if (inBounds(i + 1, j)) {
-                        newArr[i + 1][j] = data[i + 1][j] + 1;
+                        newArr[i + 1][j] = (data[i + 1][j] += 1);
                         if (newArr[i + 1][j] > maxPile) {
                             reduced = false;
                         }
                     }
                     if (inBounds(i, j + 1)) {
-                        newArr[i][j + 1] = data[i][j + 1] + 1;
+                        newArr[i][j + 1] = (data[i][j + 1] += 1);
                         if (newArr[i][j + 1] > maxPile) {
                             reduced = false;
                         }
