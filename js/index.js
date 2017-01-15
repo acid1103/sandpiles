@@ -33,7 +33,7 @@
         controlsCol.style.width = (document.body.clientWidth - c.width) + "px";
         canvas = c.getContext('2d');
         data = create2dArray(c.width, c.height);
-        data[Math.round(c.width/2)][Math.round(c.width/2)] = pileSize;
+        data[Math.round(c.width / 2)][Math.round(c.width / 2)] = pileSize;
     }
 
     init();
@@ -93,6 +93,9 @@
         return reduced;
     }
 
-    while (!step()) {};
+    var reduced = step();
+    while (reduced) {
+        step();
+    }
     console.log(data);
 })();
