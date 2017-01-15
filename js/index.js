@@ -59,7 +59,7 @@
         for (var i = 0; i < data.length; i++) {
             for (var j = 0; j < data[0].length; j++) {
                 if (data[i][j] > maxPile) {
-                    newArr[i][j] = data[i][j] - 4;
+                    newArr[i][j] = (data[i][j] -= 4);
                     if (newArr[i][j] > maxPile) {
                         reduced = false;
                     }
@@ -97,8 +97,8 @@
     }
 
     var reduced = step();
-    while (reduced) {
-        step();
+    while (!reduced) {
+        reduced = step();
     }
     console.log(data);
 })();
