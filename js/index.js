@@ -21,7 +21,7 @@
     var create2dArray = function(length, depth) {
         var arr = new Array(length);
         for (var i = 0; i < length; i++)
-            arr[i] = new Array(depth);
+            arr[i] = new Array(depth).fill(0);
         return arr;
     }
 
@@ -33,6 +33,7 @@
         controlsCol.style.width = (document.body.clientWidth - c.width) + "px";
         canvas = c.getContext('2d');
         data = create2dArray(c.width, c.height);
+        data[Math.round(c.width/2)][Math.round(c.width/2)] = pileSize;
     }
 
     init();
