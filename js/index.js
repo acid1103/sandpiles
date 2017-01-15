@@ -1,6 +1,7 @@
 (function() {
     var pileSize = 200;
     var maxPile = 4;
+    var painter;
     var data;
     var Painter = function(c) {
         this.canvas = c;
@@ -31,7 +32,7 @@
         c.height = c.width;
         var controlsCol = document.getElementById("controlsColumn");
         controlsCol.style.width = (document.body.clientWidth - c.width) + "px";
-        canvas = c.getContext('2d');
+        painter = new Painter(c.getContext('2d'));
         data = create2dArray(c.width, c.height);
         data[Math.round(c.width / 2)][Math.round(c.width / 2)] = pileSize;
     }
@@ -100,5 +101,13 @@
     while (!reduced) {
         reduced = step();
     }
-    console.log(data);
+
+    for(var i = 0; i < data.length; i++)
+    {
+    	for(var j = 0; j < data[0].length; j++)
+    	{
+    		var w = data[i][j]/maxPile*255;
+    		painter.drawPixel(i,j,w,w,w);
+    	}
+    }
 })();
